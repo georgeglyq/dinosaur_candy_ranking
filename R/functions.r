@@ -1,8 +1,31 @@
 library(dplyr)
+library(ggplot2)
 data <- read.csv("../data/candy-data.csv", stringsAsFactors = FALSE)
 
-#function that returns the ingredient by candy name
-ingredients_by_name <- function(name){
+# function that looks for the best candy based on a selected ingredient
+best_candy_ingredient <- function(ingredient) {
+  filtered <- data %>%
+    select(competitorname, !!rlang::sym(ingredient), winpercent) %>%
+    filter(!!rlang::sym(ingredient) == 1) %>%
+    filter(winpercent == max(winpercent)) %>%
+    select(competitorname)
+  my_candy <- filtered$competitorname
+  return(my_candy)
+}
+
+# function that draws a scatterplot based on the relationship of price/sugar percent vs. best candy ratings
+# category = either price or sugar percent
+price_best_rating <- function(category) {
+  data %>%
+    ggplot() +
+    geom_point(aes(x = !!rlang::sym(category), y = winpercent)) +
+    geom_smooth(method = "lm", aes(x = !!rlang::sym(category), y = winpercent)) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    labs(x = category, y = "Best Candy Ratings", title = paste0(category, " vs. Best Candy Ratings"))
+}
+
+# function that returns the ingredient by candy name
+name_function <- function(name){
   selected_row <- data %>% 
     select(-winpercent, -pricepercent) %>% 
     filter(competitorname == name) %>% 
@@ -21,10 +44,10 @@ ingredients_by_name <- function(name){
 }
 
 
-#function by type e.g. snickers, giving related material 
-related_candy_by_type <- function(type) {
+# function by type e.g. snickers, giving related material 
+type_function <- function(type) {
   
-  #function that returns the value of the selected candy in each column
+  # function that returns the value of the selected candy in each column
   extract_value <- function(category) {data %>% 
     filter(competitorname == type) %>% 
     select(category) %>% 
@@ -49,4 +72,3 @@ related_candy_by_type <- function(type) {
   
   return(related_rows)
 }
-
