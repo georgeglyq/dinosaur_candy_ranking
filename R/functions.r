@@ -45,7 +45,6 @@ name_function <- function(name){
 
 # function by type e.g. snickers, giving related material 
 type_function <- function(type) {
-  
   # function that returns the value of the selected candy in each column
   extract_value <- function(category) {
     data %>% 
