@@ -43,12 +43,12 @@ name_function <- function(name){
   return(selected_row)
 }
 
-
 # function by type e.g. snickers, giving related material 
 type_function <- function(type) {
   
   # function that returns the value of the selected candy in each column
-  extract_value <- function(category) {data %>% 
+  extract_value <- function(category) {
+    data %>% 
     filter(competitorname == type) %>% 
     select(category) %>% 
     pull()
@@ -69,6 +69,5 @@ type_function <- function(type) {
     filter(count > 5) %>% 
     filter(sugarpercent > extract_value("sugarpercent") - 0.05) %>% 
     filter(sugarpercent < extract_value("sugarpercent") + 0.05) 
-  
   return(related_rows)
 }
