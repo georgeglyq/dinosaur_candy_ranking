@@ -9,7 +9,17 @@ shinyUI(fluidPage(
     titlePanel(HTML("<h1><center><font size=20> The Best Candy </font></center></h1>")),
     
     navbarPage("Navigation",
-        tabPanel('Introduction'), 
+        tabPanel('Introduction', 
+                 p("Project Overview
+                    In this project we will be producing data in regard to the best candy of a category 
+                    (such as chocolate or nut based), suggested candies that are similar to a user preference,
+                    and their contents. Our purpose is to inform consumers about what is the best candy for 
+                    themselves or their kids in terms of flavor and nutritional facts. It will also be useful
+                    to prospective candy makers which are looking to make the best tasting candies based on
+                    current preferences. This is important because it might save someone an extra trip to the 
+                    store because a candy isn't good or is too unhealthy. Market research and learning consumer
+                    preferences is also very important for a product to be successful.")
+                 ), 
         tabPanel('Best Candy Based on Ingredient', 
                  sidebarLayout(
                      sidebarPanel(
