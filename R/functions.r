@@ -2,7 +2,7 @@ library(dplyr)
 library(ggplot2)
 library(plotly)
 
-data <- read.csv("../DinosaurCandyRanking/data/candy-data.csv", stringsAsFactors = FALSE)
+data <- read.csv("./DinosaurCandyRanking/data/candy-data.csv", stringsAsFactors = FALSE)
 
 # function that looks for the best candy based on a selected ingredient
 best_candy_ingredient <- function(ingredient) {
