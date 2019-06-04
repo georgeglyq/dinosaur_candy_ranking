@@ -3,89 +3,90 @@ library(shiny)
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
-
+    
     # Application title
     tags$img(src = 'lollipops.jpg', height = 600, width = 1175),
     titlePanel(HTML("<h1><center><font size=20> The Best Candy </font></center></h1>")),
     
     navbarPage("Navigation",
-        tabPanel('Introduction', p("Project Overview
-                                   In this project we will be producing data in regard to the best candy of a category 
-                                   (such as chocolate or nut based), suggested candies that are similar to a user preference, 
-                                   and their contents. Our purpose is to inform consumers about what is the best candy for
-                                   themselves or their kids in terms of flavor and nutritional facts. It will also be useful
-                                   to prospective candy makers which are looking to make the best tasting candies based on 
-                                   current preferences. This is important because it might save someone an extra trip to the 
-                                   store because a candy isn't good or is too unhealthy. Market research and learning consumer
-                                   preferences is also very important for a product to be successful. 
-                                   Audience
-                                   Our audience will be people who are looking to buy candies for themselves or their children
-                                   that would like to pick the best tasting candy or are looking for healthier alternatives.
-                                   We are targeting companies who are looking to make candies for the public and need information
-                                   about consumer preferences. 
-                                   Data
-                                   The data we will be using is the Candy Power Ranking dataset which is from the FiveThirtyEight 
-                                   blog. This data was collected through voting of 269,000 randomly generated candy combinations and 
-                                   86 samples which have specific information including things like ingredients, cost, and sugar 
-                                   content. This data is publicly available at https://github.com/fivethirtyeight/data/tree/master/candy-power-ranking.
-                                   Questions  
-                                   Test categories include the following
-                                   What is considered the best category in its class? (peanut, chocolate, fruit, etc.)
-                                   What candy would an individual like given their current preference?
-                                       What are the nutritional facts for a certain candy?"
-        )), 
-        tabPanel('Best Candy Based on Ingredient', 
-                 sidebarLayout(
-                     sidebarPanel(
-                         radioButtons("ingredients", "Ingredients:",
-                                      c("Chocolate" = "chocolate", "Fruity" = "fruity",
-                                        "Caramel" = "caramel", "Peanuts and Almonds" = "peanutyalmondy",
-                                        "Nougat" = "nougat", "Crisped Rice Wafer" = "crispedricewafer")
+               tabPanel('Introduction',
+                        includeMarkdown("markdownintro.md")
+               ), 
+               tabPanel('Best Candy Based on Ingredient', 
+                        sidebarLayout(
+                            sidebarPanel(
+                                radioButtons("ingredients", "Ingredients:",
+                                             c("Chocolate" = "chocolate", "Fruity" = "fruity",
+                                               "Caramel" = "caramel", "Peanuts and Almonds" = "peanutyalmondy",
+                                               "Nougat" = "nougat", "Crisped Rice Wafer" = "crispedricewafer")
+                                )
+                            ),
+                            mainPanel(
+                                p("Pick an ingredient, and based on our algorithm we will tell you the best candy that contains it!"),
+                                textOutput('candybasedoningredient')
+                                
+                            )
+                            
                         )
-                     ),
-                     mainPanel(
-                         p("Pick an ingredient, and based on our algorithm we will tell you the best candy that contains it!"),
-                         textOutput('candybasedoningredient')
-                         
-                     )
-                     
-                 )
-                 
-        ),
-        
-        tabPanel('Price or Sugar vs. Candy Ranking',
-                 sidebarLayout(
-                     sidebarPanel(
-                         selectInput(inputId = "variable",
-                                     label = "Choose a Factor:",
-                                     choices = c("Price", "Sugar Percentage"))
-                     ),
-                     mainPanel(
-                         plotOutput("plot1")
-                     )
-                 )
-                
-        ),
-        tabPanel('Candy and Their Ingredients'
-                 ),
-        tabPanel('Find Something New!' 
-                 # sidebarLayout(
-                 #     sidebarPanel(
-                 #         checkboxGroupInput("factors", "Your Candy Preferences",
-                 #                            c("Chocolate" = "chocolate", "Fruity" = "fruity",
-                 #                              "Caramel" = "caramel", "Peanuts and Almonds" = "peanutyalmondy",
-                 #                              "Nougat" = "nougat", "Crisped Rice Wafer" = "crispedricewafer",
-                 #                              "Hard" = "hard", "Bar" = "bar", "Pieces" = "pluribus"))
-                 #     ),
-                 #     mainPanel(
-                 #         textOutput("candybasedonpreference")
-                 #     )
-                 #     
-                  ),
-        tabPanel('Conclusion')
-                 
-    )
-))
+                        
+               ),
+               
+               tabPanel('Price or Sugar vs. Candy Ranking',
+                        sidebarLayout(
+                            sidebarPanel(
+                                selectInput(inputId = "variable",
+                                            label = "Choose a Factor:",
+                                            choices = c("Price", "Sugar Percentage")),
+                                textOutput('pricesugartext')
+                                
+                            ),
+                            mainPanel(
+                                p("This graph shows the relation of price or sugar relative to the candy's ranking"),
+                                plotOutput("plot1")
+                                
+                            )
+                        )
+                        
+               ),
+               tabPanel('Candy and Their Ingredients', 
+                        sidebarLayout(
+                            sidebarPanel(
+                                p("hello"),
+                                radioButtons("factors", "Pick Your Candy",
+                                             c("100 Grand" = "100 Grand", "3 Musketeers" = "3 Musketeers", "One Dime" = "One dime",
+                                               "One Quarter" = "One quarter", "Air Heads" = "Air Heads", "Almond Joy" = "Almond Joy",
+                                               "Baby Ruth" = "Baby Ruth",  "Boston Baked Beans" =  "Boston Baked Beans", "Candy Corn" = "Candy Corn",
+                                               "Caramel Apple Pops" = "Caramel Apple Pops", "Charleston Chew" = "Charleston Chew", 
+                                               "Chewey Lemonhead Fruit Mix" = "Chewey Lemonhead Fruit Mix", "Chiclets" = "Chiclets",
+                                               "Dots" = "Dots", "Dum Dums" = "Dum Dums", "Fruit Chews" = "Fruit Chews", "Fun Dip" = "Fun Dip",
+                                               "Gobstoppers" =  "Gobstopper", "Haribo Gold Bears" = "Haribo Gold Bears", 
+                                               "Haribo Happy Cola" =  "Haribo Happy Cola",  "Haribo Sour Bears" =  "Haribo Sour Bears", 
+                                               "Haribo Twin Snakes" = "Haribo Twin Snakes", "Jawbusters" = "Jawbusters", "Junior Mints" = "Junior Mints", 
+                                               "Kit Kat" =  "Kit Kat",  "Laffy Taffy" =  "Laffy Taffy",  "Lemonhead" =  "Lemonhead",
+                                               "Lifesavers Big Ring Gummies" = "Lifesavers big ring gummies", "Mike & Ike" =  "Mike & Ike",
+                                               "Milk Duds" = "Milk Duds",  "Milky Way" = "Milky Way", "Milky Way Midnight", "Milky Way Simply Caramel" = "Milky Way Simply Caramel",
+                                               "Mr Good Bar" = "Mr Good Bar", "Nerds" = "Nerds", "Mounds" = "Mounds",  "Nestle Butterfinger" =  "Nestle Butterfinger",
+                                               "Nestle Crunch" = "Nestle Crunch", "Nik L Nip" =  "Nik L Nip", "Now & Later" = "Now & Later", "Payday" = "Payday",
+                                               "Peanut M&Ms" = "Peanut M&Ms", "Pixie Sticks" = "Pixie Sticks", "Pop Rocks" = "Pop Rocks", "Red Vines" = "Red vines", "Ring Pop" = "Ring pop",
+                                               "Rolo" = "Rolo", "Root Beer Barrels" = "Root Beer Barrels", "Runts" = "Runts", "Sixlets" = "Sixlets",
+                                               "Skittles Original" = "Skittles original", "Skittles Wildberry" = "Skittles wildberry", 
+                                               "Nestle Smarties" = "Nestle Smarties", "Smarties Candy" = "Smarties candy", "Snickers" = "Snickers",
+                                               "Snickers Crisper" =  "Snickers Crisper", "Sour Patch Kids" = "Sour Patch Kids", "Sour Patch Tricksters" = "Sour Patch Tricksters",
+                                               "Starburst" = "Starburst",  "Strawberry Bon Bons" = "Strawberry bon bons", "Sugar Babies" = "Sugar Babies", "Sugar Daddy" = "Sugar Daddy", 
+                                               "Super Bubble" = "Super Bubble", "Swedish Fish" = "Swedish Fish",  "Tootsie Pop" =  "Tootsie Pop", 
+                                               "Tootsie Roll Juniors" = "Tootsie Roll Juniors", "Tootsie Roll Midgies" = "Tootsie Roll Midgies", 
+                                               "Tootsie Roll Snack Bars" = "Tootsie Roll Snack Bars" , "Trolli Sour Bites" = "Trolli Sour Bites",
+                                               "Twix" = "Twix", "Twizzlers" = "Twizzlers", "Warheads" = "Warheads", "Whoppers" = "Whoppers")
+                                             
+                                )
+                            ),
+                            mainPanel(
+                                dataTableOutput("candyingredientslist")
+                            )
+                        )
+               ),
+               tabPanel('Find Something New!')
+    )))
 
 # #Tab comments 
 # Best candy based on ingredient
@@ -97,4 +98,17 @@ shinyUI(fluidPage(
 # Find something new
 # Here a user inputs a candy which they like and similar candies based on sugar percent and ingredients are displayed.
 
+# ,
+# , ,"Hershey√.s Kisses" = "Hershey√.s Kisses"
+# "Hershey√.s Krackel" = "Hershey√.s Krackel", ,
+#,
+# "Peanut butter M&M√.s" =  "Peanut butter M&M√.s",,
+# "M&M√.s" = "M&M√.s",
 
+# , ,
+# ,
+# "Reese√.s Miniatures" = "Reese√.s Miniatures", "Reese√.s Peanut Butter Cup"= "Reese√.s Peanut Butter cup",
+# "Reese√.s pieces" =  "Reese√.s pieces",  "Reese√.s Stuffed With Pieces" =  "Reese√.s stuffed with pieces",
+# ,"Welch's Fruit Snacks" = "Welch√.s Fruit Snacks"
+# 
+# "Werther's Original Caramel" = "Werther√.s Original Caramel", ")
