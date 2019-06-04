@@ -65,17 +65,8 @@ type_function <- function(type) {
              abs(extract_value("hard") - hard) +
              abs(extract_value("bar") - bar) +
              abs(extract_value("pluribus") - pluribus)) %>% 
-    filter(count > 5) %>%
+    filter(count > 5) %>% 
     filter(sugarpercent > extract_value("sugarpercent") - 0.05) %>% 
     filter(sugarpercent < extract_value("sugarpercent") + 0.05) 
   return(related_rows)
-}
-#function that returns a histogram that tells how many similarities do the candies have with the selected candy
-similarity_histogram <- function(candy) {
-  data_set <- type_function(candy) %>% 
-    select(competitorname, count)
-  histogram <- ggplot(data_set, aes(competitorname, count, fill = competitorname))  +
-              geom_col() +
-               labs(x = "Candy Name", y = "Similarities", title = paste0("Candies Similar to", candy))
-  return(histogram)
 }
