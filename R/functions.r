@@ -1,5 +1,7 @@
 library(dplyr)
 library(ggplot2)
+library(plotly)
+
 data <- read.csv("../DinosaurCandyRanking/data/candy-data.csv", stringsAsFactors = FALSE)
 
 # function that looks for the best candy based on a selected ingredient
@@ -16,12 +18,13 @@ best_candy_ingredient <- function(ingredient) {
 # function that draws a scatterplot based on the relationship of price/sugar percent vs. best candy ratings
 # category = either price or sugar percent
 price_best_rating <- function(category) {
-  data %>%
+  my_plot <- data %>% 
     ggplot() +
     geom_point(aes(x = !!rlang::sym(category), y = winpercent)) +
-    geom_smooth(method = "lm", aes(x = !!rlang::sym(category), y = winpercent)) +
+    aes_string(text = "competitorname") +
     theme(plot.title = element_text(hjust = 0.5)) +
     labs(x = category, y = "Best Candy Ratings", title = paste0(category, " vs. Best Candy Ratings"))
+  ggplotly(my_plot, source = "select", tooltip = c("text")) %>% config(displayModeBar = F)
 }
 
 # function that returns the ingredient by candy name
@@ -82,3 +85,4 @@ similarity_histogram <- function(candy) {
     labs(x = "Candy Name", y = "Similarity Score Out of 9", title = paste0("Candies Similar to ", candy), fill = "Similar Candies")
   return(histogram)
 }
+
