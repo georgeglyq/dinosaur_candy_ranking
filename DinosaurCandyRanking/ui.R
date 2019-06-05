@@ -192,7 +192,7 @@ shinyUI(fluidPage(
                             # Similarity is decided on matching ingredients and sugar content
                             mainPanel(
                                 p("Here, see what candies are the most similar to the candy you picked, based on ingredients and sugar content."),
-                                p("The closer a candy's bar height is to your selected candy's bar, the more similar it is."),
+                                p("The closer a candy's bar height is to your selected candy's bar, meaning the closer the score is to 9, the more similar it is."),
                                 plotlyOutput("similarcandy")
                             )
                         )
