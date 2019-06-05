@@ -32,8 +32,13 @@ ingredients and if the sugar percentage is within a 5% range of the chosen candy
  <br />
 View our app [here](https://mariamatlick.shinyapps.io/DinosaurCandyRanking/)
 next:
+ <br />
 [here](https://github.com/fivethirtyeight/data/tree/master/candy-power-ranking)
+ <br />
 next next:
+ <br />
 [here](https://mariamatlick.shinyapps.io/DinosaurCandyRanking/)
-next next next:
+ <br />
+ next next next:
+  <br />
 [here](https://mariamatlick.shinyapps.io/DinosaurCandyRanking/)
