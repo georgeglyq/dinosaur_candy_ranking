@@ -32,14 +32,14 @@ shinyUI(fluidPage(
                             # ingredient that the user selected from the buttons
                             mainPanel(
                                 p("Pick an ingredient, and based on our algorithm we will tell you the best candy that contains it!"),
-                                textOutput('candybasedoningredient')
-                                
+                                textOutput('candybasedoningredient'),
+                                tags$head(tags$style("#candybasedoningredient{color: blue; font-size: 15px; font-style: bold}"))
                             )
                             
                         )
                         
                ),
-            
+               
                # Plots an interactive scatter plot either based on Price vs Candy Ranking or Sugar Content vs Candy Ranking
                tabPanel('Price or Sugar vs. Candy Ranking',
                         sidebarLayout(
@@ -132,54 +132,54 @@ shinyUI(fluidPage(
                             # Provides a dropdown menu of all the candies and the user can select one
                             sidebarPanel(
                                 selectInput(inputId = "candies", 
-                                             label = "Pick Your Candy",
-                                             choices = c("100 Grand" = "100 Grand", "3 Musketeers" = "3 Musketeers", 
-                                                         "One Dime" = "One dime",
-                                                         "One Quarter" = "One quarter", "Air Heads" = "Air Heads", 
-                                                         "Almond Joy" = "Almond Joy",
-                                                         "Baby Ruth" = "Baby Ruth",  "Boston Baked Beans" =  "Boston Baked Beans", 
-                                                         "Candy Corn" = "Candy Corn",
-                                                         "Caramel Apple Pops" = "Caramel Apple Pops", "Charleston Chew" = "Charleston Chew", 
-                                                         "Chewey Lemonhead Fruit Mix" = "Chewey Lemonhead Fruit Mix",
-                                                         "Chiclets" = "Chiclets",
-                                                         "Dots" = "Dots", "Dum Dums" = "Dum Dums", "Fruit Chews" = "Fruit Chews", 
-                                                         "Fun Dip" = "Fun Dip",
-                                                         "Gobstoppers" =  "Gobstopper", "Haribo Gold Bears" = "Haribo Gold Bears", 
-                                                         "Haribo Happy Cola" =  "Haribo Happy Cola",  "Haribo Sour Bears" =  "Haribo Sour Bears", 
-                                                         "Haribo Twin Snakes" = "Haribo Twin Snakes", "Hersheys Kisses" = "Hersheys Kisses",
-                                                          "Hersheys Krackel" = "Hersheys Krackel",
-                                                         "Jawbusters" = "Jawbusters", "Junior Mints" = "Junior Mints",
-                                                         "Kit Kat" =  "Kit Kat",  "Laffy Taffy" =  "Laffy Taffy",  "Lemonhead" =  "Lemonhead",
-                                                         "Lifesavers Big Ring Gummies" = "Lifesavers big ring gummies",
-                                                         "Peanut butter M&Ms" =  "Peanut butter M&Ms",
-                                                          "M&Ms" = "M&Ms","Mike & Ike" =  "Mike & Ike",
-                                                         "Milk Duds" = "Milk Duds",  "Milky Way" = "Milky Way", "Milky Way Midnight",
-                                                         "Milky Way Simply Caramel" = "Milky Way Simply Caramel",
-                                                         "Mr Good Bar" = "Mr Good Bar", "Nerds" = "Nerds", "Mounds" = "Mounds",
-                                                         "Nestle Butterfinger" =  "Nestle Butterfinger",
-                                                         "Nestle Crunch" = "Nestle Crunch", "Nik L Nip" =  "Nik L Nip", "Now & Later" = "Now & Later",
-                                                         "Payday" = "Payday",
-                                                         "Peanut M&Ms" = "Peanut M&Ms", "Pixie Sticks" = "Pixie Sticks", "Pop Rocks" = "Pop Rocks",
-                                                         "Red Vines" = "Red vines",
-                                                         "Reeses Miniatures" = "Reeses Miniatures", "Reeses Peanut Butter Cup"= "Reeses Peanut Butter cup",
-                                                         "Reeses pieces" =  "Reeses pieces",  "Reeses Stuffed With Pieces" =  "Reeses stuffed with pieces",
-                                                         "Ring Pop" = "Ring pop",
-                                                         "Rolo" = "Rolo", "Root Beer Barrels" = "Root Beer Barrels", "Runts" = "Runts",
-                                                         "Sixlets" = "Sixlets",
-                                                         "Skittles Original" = "Skittles original", "Skittles Wildberry" = "Skittles wildberry",
-                                                         "Nestle Smarties" = "Nestle Smarties", "Smarties Candy" = "Smarties candy",
-                                                         "Snickers" = "Snickers",
-                                                         "Snickers Crisper" =  "Snickers Crisper", "Sour Patch Kids" = "Sour Patch Kids",
-                                                         "Sour Patch Tricksters" = "Sour Patch Tricksters",
-                                                         "Starburst" = "Starburst",  "Strawberry Bon Bons" = "Strawberry bon bons",
-                                                         "Sugar Babies" = "Sugar Babies", "Sugar Daddy" = "Sugar Daddy",
-                                                         "Super Bubble" = "Super Bubble", "Swedish Fish" = "Swedish Fish",  "Tootsie Pop" =  "Tootsie Pop",
-                                                         "Tootsie Roll Juniors" = "Tootsie Roll Juniors", "Tootsie Roll Midgies" = "Tootsie Roll Midgies",
-                                                         "Tootsie Roll Snack Bars" = "Tootsie Roll Snack Bars" , "Trolli Sour Bites" = "Trolli Sour Bites",
-                                                         "Twix" = "Twix", "Twizzlers" = "Twizzlers", "Warheads" = "Warheads",
-                                                         "Welchs Fruit Snacks" = "Welchs Fruit Snacks",
-                                                         "Werther's Original Caramel" = "Werthers Original Caramel", "Whoppers" = "Whoppers")
-                                             
+                                            label = "Pick Your Candy",
+                                            choices = c("100 Grand" = "100 Grand", "3 Musketeers" = "3 Musketeers", 
+                                                        "One Dime" = "One dime",
+                                                        "One Quarter" = "One quarter", "Air Heads" = "Air Heads", 
+                                                        "Almond Joy" = "Almond Joy",
+                                                        "Baby Ruth" = "Baby Ruth",  "Boston Baked Beans" =  "Boston Baked Beans", 
+                                                        "Candy Corn" = "Candy Corn",
+                                                        "Caramel Apple Pops" = "Caramel Apple Pops", "Charleston Chew" = "Charleston Chew", 
+                                                        "Chewey Lemonhead Fruit Mix" = "Chewey Lemonhead Fruit Mix",
+                                                        "Chiclets" = "Chiclets",
+                                                        "Dots" = "Dots", "Dum Dums" = "Dum Dums", "Fruit Chews" = "Fruit Chews", 
+                                                        "Fun Dip" = "Fun Dip",
+                                                        "Gobstoppers" =  "Gobstopper", "Haribo Gold Bears" = "Haribo Gold Bears", 
+                                                        "Haribo Happy Cola" =  "Haribo Happy Cola",  "Haribo Sour Bears" =  "Haribo Sour Bears", 
+                                                        "Haribo Twin Snakes" = "Haribo Twin Snakes", "Hersheys Kisses" = "Hersheys Kisses",
+                                                        "Hersheys Krackel" = "Hersheys Krackel",
+                                                        "Jawbusters" = "Jawbusters", "Junior Mints" = "Junior Mints",
+                                                        "Kit Kat" =  "Kit Kat",  "Laffy Taffy" =  "Laffy Taffy",  "Lemonhead" =  "Lemonhead",
+                                                        "Lifesavers Big Ring Gummies" = "Lifesavers big ring gummies",
+                                                        "Peanut butter M&Ms" =  "Peanut butter M&Ms",
+                                                        "M&Ms" = "M&Ms","Mike & Ike" =  "Mike & Ike",
+                                                        "Milk Duds" = "Milk Duds",  "Milky Way" = "Milky Way", "Milky Way Midnight",
+                                                        "Milky Way Simply Caramel" = "Milky Way Simply Caramel",
+                                                        "Mr Good Bar" = "Mr Good Bar", "Nerds" = "Nerds", "Mounds" = "Mounds",
+                                                        "Nestle Butterfinger" =  "Nestle Butterfinger",
+                                                        "Nestle Crunch" = "Nestle Crunch", "Nik L Nip" =  "Nik L Nip", "Now & Later" = "Now & Later",
+                                                        "Payday" = "Payday",
+                                                        "Peanut M&Ms" = "Peanut M&Ms", "Pixie Sticks" = "Pixie Sticks", "Pop Rocks" = "Pop Rocks",
+                                                        "Red Vines" = "Red vines",
+                                                        "Reeses Miniatures" = "Reeses Miniatures", "Reeses Peanut Butter Cup"= "Reeses Peanut Butter cup",
+                                                        "Reeses pieces" =  "Reeses pieces",  "Reeses Stuffed With Pieces" =  "Reeses stuffed with pieces",
+                                                        "Ring Pop" = "Ring pop",
+                                                        "Rolo" = "Rolo", "Root Beer Barrels" = "Root Beer Barrels", "Runts" = "Runts",
+                                                        "Sixlets" = "Sixlets",
+                                                        "Skittles Original" = "Skittles original", "Skittles Wildberry" = "Skittles wildberry",
+                                                        "Nestle Smarties" = "Nestle Smarties", "Smarties Candy" = "Smarties candy",
+                                                        "Snickers" = "Snickers",
+                                                        "Snickers Crisper" =  "Snickers Crisper", "Sour Patch Kids" = "Sour Patch Kids",
+                                                        "Sour Patch Tricksters" = "Sour Patch Tricksters",
+                                                        "Starburst" = "Starburst",  "Strawberry Bon Bons" = "Strawberry bon bons",
+                                                        "Sugar Babies" = "Sugar Babies", "Sugar Daddy" = "Sugar Daddy",
+                                                        "Super Bubble" = "Super Bubble", "Swedish Fish" = "Swedish Fish",  "Tootsie Pop" =  "Tootsie Pop",
+                                                        "Tootsie Roll Juniors" = "Tootsie Roll Juniors", "Tootsie Roll Midgies" = "Tootsie Roll Midgies",
+                                                        "Tootsie Roll Snack Bars" = "Tootsie Roll Snack Bars" , "Trolli Sour Bites" = "Trolli Sour Bites",
+                                                        "Twix" = "Twix", "Twizzlers" = "Twizzlers", "Warheads" = "Warheads",
+                                                        "Welchs Fruit Snacks" = "Welchs Fruit Snacks",
+                                                        "Werther's Original Caramel" = "Werthers Original Caramel", "Whoppers" = "Whoppers")
+                                            
                                 )
                             ),
                             # Produces a bar graph that contains similar candies, with the closer a bar height is to the
@@ -188,9 +188,14 @@ shinyUI(fluidPage(
                             mainPanel(
                                 p("Here, see what candies are the most similar to the candy you picked, based on ingredients and sugar content."),
                                 p("The closer a candy's bar height is to your selected candy's bar, the more similar it is."),
-                                plotOutput("similarcandy")
+                                plotlyOutput("similarcandy")
                             )
                         )
-            )
+               ),
+               br(),
+               br(),
+               br(),
+               br(),
+               br()
     )))
 
