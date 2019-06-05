@@ -24,9 +24,12 @@ content. This data is publicly available [here](https://github.com/fivethirtyeig
 Test categories include the following:
 * What is considered the best category in its class? (peanut, chocolate, fruit, etc.)
 * What candy would an individual like given their current preference?
-* What are the nutritional facts for a certain candy? 
+* What are the nutritional facts for a certain candy?  <br />
 
+<br />
+<br />
+<br />
 
-This ShinyApp was created in collaboration with Ryan Huang, Maria Matlick, George Gu, and Justin Du <br />
+**This ShinyApp was created in collaboration with Ryan Huang, Maria Matlick, George Gu, and Justin Du** <br />
 
-Info 201 B, section BB
+**Info 201 B, section BB**
