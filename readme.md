@@ -30,4 +30,10 @@ hopefully also like. The recommended candies must have a score of at least 6 out
 ingredients and if the sugar percentage is within a 5% range of the chosen candy.
  <br />
  <br />
-View our app [here][https://mariamatlick.shinyapps.io/DinosaurCandyRanking/]
+View our app [here](https://mariamatlick.shinyapps.io/DinosaurCandyRanking/)
+next:
+[here](https://github.com/fivethirtyeight/data/tree/master/candy-power-ranking)
+next next:
+[here](https://mariamatlick.shinyapps.io/DinosaurCandyRanking/)
+next next next:
+[here](https://mariamatlick.shinyapps.io/DinosaurCandyRanking/)
