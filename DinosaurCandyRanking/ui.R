@@ -1,24 +1,28 @@
-
 library(shiny)
 library(plotly)
 library(markdown)
+library(shinythemes)
 
 # Define UI for application 
 shinyUI(fluidPage(
     
+    theme = shinytheme("united"),
     # Application title and header image of candy
-    tags$img(src = 'lollipops.jpg', height = 600, width = 1250),
+    title = "The Best Candy",
+    HTML('<center><img src="lollipops.jpg" height="550"></center>'),
+    br(),
     titlePanel(HTML("<h1><center><font size=20> The Best Candy </font></center></h1>")),
+    br(),
     
     # Creates a Navbar with 5 tabs: Introduction, Best Candy Based on Ingredient, Price or Sugar vs. 
     # Candy rating, Candy and Their Ingredients, and, Find Something New
     navbarPage("Navigation",
-               tabPanel('Introduction',
+               tabPanel('Introduction', icon = icon("home"),
                         includeMarkdown("markdownintro.md")
                ), 
                
                # Gives textual output based on user choice what the best candy is depending on ingredient
-               tabPanel('Best Candy Based on Ingredient', 
+               tabPanel('Best Candy Based on Ingredient', icon = icon("crown"),
                         sidebarLayout(
                             # Has a sidepanel with radio buttons for the different ingredients, the user can select one
                             sidebarPanel(
@@ -32,8 +36,9 @@ shinyUI(fluidPage(
                             # ingredient that the user selected from the buttons
                             mainPanel(
                                 p("Pick an ingredient, and based on our algorithm we will tell you the best candy that contains it!"),
+                                br(),
                                 textOutput('candybasedoningredient'),
-                                tags$head(tags$style("#candybasedoningredient{color: blue; font-size: 15px; font-style: bold}"))
+                                tags$head(tags$style("#candybasedoningredient{color: blue; font-size: 18px; font-style: bold}"))
                             )
                             
                         )
@@ -41,7 +46,7 @@ shinyUI(fluidPage(
                ),
                
                # Plots an interactive scatter plot either based on Price vs Candy Ranking or Sugar Content vs Candy Ranking
-               tabPanel('Price or Sugar vs. Candy Ranking',
+               tabPanel('Price or Sugar vs. Candy Ranking', icon = icon("donate"),
                         sidebarLayout(
                             # The user chooses to plot based on either price or sugar percentage
                             sidebarPanel(
@@ -63,7 +68,7 @@ shinyUI(fluidPage(
                
                # A user can choose a candy from all of the options and a dataframe is returned telling them whether or not
                # it contains an ingredient from the list
-               tabPanel('Candy and Their Ingredients', 
+               tabPanel('Candy and Their Ingredients', icon = icon("search"),
                         sidebarLayout(
                             # Provides a drop down menu with all of the candy options
                             sidebarPanel(
@@ -127,7 +132,7 @@ shinyUI(fluidPage(
                         )
                ),
                # Allows a user to select a candy from a dropdown menu and outputs a graph of similar candies
-               tabPanel('Find Something New!', 
+               tabPanel('Find Something New!', icon = icon("hand-point-right"),
                         sidebarLayout(
                             # Provides a dropdown menu of all the candies and the user can select one
                             sidebarPanel(
