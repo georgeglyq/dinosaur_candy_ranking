@@ -18,10 +18,15 @@ about consumer preferences.
 The data we will be using is the Candy Power Ranking dataset which is from the FiveThirtyEight
 blog. This data was collected through voting of 269,000 randomly generated candy combinations and
 86 samples which have specific information including things like ingredients, cost, and sugar
-content. This data is publicly available [here](https://github.com/fivethirtyeight/data/tree/master/candy-power-ranking)
+content. This data is publicly available [here](https://github.com/fivethirtyeight/data/tree/master/candy-power-ranking).
 
 ## Questions
 Test categories include the following:
 * What is considered the best category in its class? (peanut, chocolate, fruit, etc.)
 * What candy would an individual like given their current preference?
-* What are the nutritional facts for a certain candy?"
+* What are the nutritional facts for a certain candy? Du <br />
+
+
+This ShinyApp was created in collaboration with Ryan Huang, Maria Matlick, George Gu, and Justin Du <br />
+
+Info 201 B, section AF
