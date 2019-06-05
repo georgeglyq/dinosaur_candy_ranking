@@ -23,8 +23,10 @@ content. This data is publicly available [here](https://github.com/fivethirtyeig
 ## Questions
 Test categories include the following:
 * What is considered the best category in its class? (peanut, chocolate, fruit, etc.)
-* What candy would an individual like given their current preference?
-* What are the nutritional facts for a certain candy?  <br />
+* What is the price or sugar content compared to the candy's ranking?
+* What are the nutritional facts for a certain candy?
+* What candy would an individual like given their current preference? <br />
+
 
 <br />
 <br />
