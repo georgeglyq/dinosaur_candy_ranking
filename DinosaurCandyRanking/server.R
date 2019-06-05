@@ -30,13 +30,13 @@ price_best_rating <- function(category) {
         cat("There is a slight positive linear trend between how high a candy is ranked and how much sugar it contains, with people generally preferring candies with more sugar")
     }
     
-        my_plot <- data %>% 
-            ggplot() +
-            geom_point(aes(x = !!rlang::sym(category), y = winpercent)) +
-            aes_string(text = "competitorname") +
-            theme(plot.title = element_text(hjust = 0.5)) +
-            labs(x = label, y = "Best Candy Ratings", title = paste0(label, " vs. Best Candy Ratings"))
-        ggplotly(my_plot, source = "select", tooltip = c("text")) %>% config(displayModeBar = F)
+    my_plot <- data %>% 
+        ggplot() +
+        geom_point(aes(x = !!rlang::sym(category), y = winpercent)) +
+        aes_string(text = "competitorname") +
+        theme(plot.title = element_text(hjust = 0.5)) +
+        labs(x = label, y = "Best Candy Ratings", title = paste0(label, " vs. Best Candy Ratings"))
+    ggplotly(my_plot, source = "select", tooltip = c("text")) %>% config(displayModeBar = F)
 }
 
 # function that returns the list of ingredients and "YES" or "NO" based on if the inputted 
@@ -92,12 +92,14 @@ type_function <- function(type) {
 # function that returns a histogram that tells how many similarities do the candies have with the selected candy
 similarity_histogram <- function(candy) {
     data_set <- type_function(candy) %>% 
-        select(competitorname, count)
-    histogram <- ggplot(data_set, aes(competitorname, 9-count, fill = competitorname))  +
+        select(competitorname, count) %>%
+        mutate(Similarity = 9-count)
+    histogram <- ggplot(data_set, aes(competitorname, Similarity, fill = competitorname))  +
         geom_col() +
         theme(plot.title = element_text(hjust = 0.5)) +    
-        labs(x = "Candy Name", y = "Similarity Score Out of 9", title = paste0("Candies Similar to ", candy), fill = "Similar Candies")
-    return(histogram)
+        labs(x = "Candy Name", y = "Similarity Score Out of 9", title = paste0("Candies Similar to ", candy), fill = "Similar Candies") +
+        aes_string(text = "competitorname", count = "Similarity")
+    ggplotly(histogram, source = "select", tooltip = c("text", "count")) %>% config(displayModeBar = F)
 }
 
 
@@ -118,7 +120,7 @@ shinyServer(function(input, output) {
     output$pricesugartext <-  renderPrint({
         price_best_rating(input$variable)
     })
-
+    
     # Outputs a datatable of ingredients and whether a candy contains it or not based on
     # user input
     output$candyingredientslist <-  renderTable({
@@ -127,7 +129,7 @@ shinyServer(function(input, output) {
     
     # Outputs a histogram of candies and how similar they are compared to a user
     # selected candy
-    output$similarcandy <- renderPlot({
+    output$similarcandy <- renderPlotly({
         similarity_histogram(input$candies)
     })
     
