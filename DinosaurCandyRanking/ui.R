@@ -6,7 +6,7 @@ library(plotly)
 shinyUI(fluidPage(
     
     # Application title and header image of candy
-    tags$img(src = 'lollipops.jpg', height = 600, width = 1175),
+    tags$img(src = 'lollipops.jpg', height = 600, width = 1250),
     titlePanel(HTML("<h1><center><font size=20> The Best Candy </font></center></h1>")),
     
     # Creates a Navbar with 5 tabs: Introduction, Best Candy Based on Ingredient, Price or Sugar vs. 
