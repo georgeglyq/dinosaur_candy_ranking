@@ -30,4 +30,4 @@ hopefully also like. The recommended candies must have a score of at least 6 out
 ingredients and if the sugar percentage is within a 5% range of the chosen candy.
  <br />
  <br />
-View our app [here](https://mariamatlick.shinyapps.io/DinosaurCandyRanking/).
+[Click here](https://mariamatlick.shinyapps.io/DinosaurCandyRanking/) to view our app.
