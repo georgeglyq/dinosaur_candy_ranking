@@ -1,6 +1,6 @@
 This ShinyApp was created in collaboration with Ryan Huang, Maria Matlick, George Gu, and Justin Du.
 The data we will be using is the Candy Power Ranking dataset which is from the FiveThirtyEight
-blog.
+blog. [Click here](https://mariamatlick.shinyapps.io/DinosaurCandyRanking/) to view our app.
 <br />
 <br />
 This data was collected through a surveyed sample of 8,000 people. They voted on 269,000 randomly generated candy combinations of
@@ -28,6 +28,3 @@ in each column depending on if the candy contains that factor or not. It also di
 Our app will also create a recommendation histogram. The user can pick one of the 86 candy options, and then sees a display of candies similar to this one that they would
 hopefully also like. The recommended candies must have a score of at least 6 out of the maximum 9, with this score determined on whether the candies contain the same
 ingredients and if the sugar percentage is within a 5% range of the chosen candy.
- <br />
- <br />
-[Click here](https://mariamatlick.shinyapps.io/DinosaurCandyRanking/) to view our app.
